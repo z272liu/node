@@ -1,0 +1,36 @@
+
+type Query {
+    Shops:[Shop!]!
+    Users:[User!]!
+}
+
+type Shop {
+  id:ID!
+  name:String!
+  products: [Product!]!
+  orders: [Order]
+}
+type Product {
+  id:ID!
+  name:String!
+  prize:Int
+  listItems:[ListItem!]!
+}
+type Order {
+  id:ID!
+  listItems:[ListItem!]!
+  prize:Int
+}
+type ListItem {
+  name:String!
+  prize:Int
+}
+type User {
+  id: ID!
+  name: String!
+  orders: [Order!]
+}
+
+type Mutation {
+  placeOrder(UserID: ID!, ShopID: ID!, Products:[ID!]!): Order!
+}
